@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioChem Research | Laboratory Reference Peptides</title>
+    <style>
+        /* Modern & Sterile Visual Identity */
+        :root {
+            --primary: #0f172a;
+            --accent: #0284c7;
+            --bg-light: #f8fafc;
+            --text-main: #334155;
+            --border: #e2e8f0;
+            --warning-bg: #fef2f2;
+            --warning-border: #ef4444;
+            --warning-text: #991b1b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Top Compliance Banner */
+        .compliance-banner {
+            background-color: var(--warning-bg);
+            border-bottom: 1px solid var(--warning-border);
+            color: var(--warning-text);
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 25px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero / Introduction section */
+        .hero {
+            max-width: 1200px;
+            margin: 40px auto 20px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #64748b;
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @media (min-width: 900px) {
+            .main-container {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* Catalog Grid Section */
+        .catalog-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 600px) {
+            .catalog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Product Cards */
+        .product-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        .p-meta {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .p-name {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .p-specs {
+            list-style: none;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 16px;
+            background: var(--bg-light);
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .p-specs li {
+            margin-bottom: 4px;
+        }
+
+        .p-specs li:last-child {
+            margin-bottom: 0;
+        }
+
+        .inquire-btn {
+            display: inline-block;
+            text-align: center;
+            background: var(--primary);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .inquire-btn:hover {
+            background: var(--accent);
+        }
+
+        /* Sidebar Inquiry Form */
+        .form-sidebar {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            height: fit-content;
+            position: sticky;
+            top: 110px;
+        }
+
+        .form-sidebar h2 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .form-sidebar p {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--primary);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            background: var(--bg-light);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: #ffffff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #0369a1;
+        }
+
+        /* Sterile Corporate Footer */
+        footer {
+            background: #ffffff;
+            border-top: 1px solid var(--border);
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .footer-disclaimer {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            text-align: left;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mandatory Top Compliance Banner -->
+    <div class="compliance-banner">
+        Warning: For Laboratory Research Use Only. Strictly Not For Human Consumption or Clinical Use.
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">BioChem<span>Labs</span></div>
+            <nav>
+                <a href="#catalog">Research Catalog</a>
+                <a href="#inquire">Submit Inquiry</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Brief Introduction -->
+    <section class="hero">
+        <h1>High-Purity Reference Peptides</h1>
+        <p>Providing verified chemical compounds and reference standards strictly manufactured for analytical chemistry testing and laboratory in-vitro applications.</p>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="main-container">
+        
+        <!-- Left Side: Catalog Listings -->
+        <section id="catalog">
+            <h2 class="catalog-title">Available Reference Standards</h2>
+            <div class="catalog-grid">
+                
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div>
+                        <div class="p-meta">Purity: &ge;99.2%</div>
+                        <h3 class="p-name">BPC-157</h3>
+                        <ul class="p-specs">
+                            <li><strong>CAS NO:</strong> 137525-51-0</li>
+                            <li><strong>Format:</strong> Lyophilized Powder</li>
+                            <li><strong>Formula:</strong> C<sub>62</sub>H<sub>98</sub>N<sub>16</sub>O<sub>22</sub></li>
+                            <li><strong>Sequence:</strong> Gly-Glu-Pro-Pro-Pro-Gly-Lys-Pro-Ala-Asp-Asp-Ala-Gly-Leu-Val</li>
+                        </ul>
+                    </div>
+                    <a href="#inquire" class="inquire-btn" onclick="selectProduct('BPC-157')">Request Verification Quote</a>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div>
+                        <div class="p-meta">Purity: &ge;99.5%</div>
+                        <h3 class="p-name">TB-500</h3>
+                        <ul class="p-specs">
+                            <li><strong>CAS NO:</strong> 77591-33-4</li>
+                            <li><strong>Format:</strong> Lyophilized Powder</li>
+                            <li><strong>Formula:</strong> C<sub>212</sub>H<sub>350</sub>N<sub>56</sub>O<sub>78</sub>S</li>
+                            <li><strong>Sequence:</strong> Ac-Ser-Asp-Lys-Pro-Asp-Ma-Glu-Ile-Glu-B1-Phe-D1-Lys-...</li>
+                        </ul>
+                    </div>
+                    <a href="#inquire" class="inquire-btn" onclick="selectProduct('TB-500')">Request Verification Quote</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Right Side: Sidebar Inquiry Form -->
+        <aside class="form-sidebar" id="inquire">
+            <h2>Research Inquiry</h2>
+            <p>Submit inquiries regarding reference standard availability, analytical certificates, and bulk verification testing.</p>
+            
+            <!-- Web3Forms Form Integration -->
+            <form action="https://api.web3forms.com/submit" method="POST">
+                
+                <!-- Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="7f7ec8e0-0eb3-437b-97b1-a165e8e14ba0">
+
+                <div class="form-group">
+                    <label for="name">Laboratory / Investigator Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Dr. Jane Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Institutional Email</label>
+                    <input type="email" id="email" name="email" required placeholder="investigator@university.edu">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Inquiry Details / Target Standard</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Please specify reference compound and required documentation..."></textarea>
+                </div>
+
+                <!-- Optional: Redirect back to a success page or keep default -->
+                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+                <button type="submit" class="submit-btn">Transmit Inquiry</button>
+            </form>
+        </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-disclaimer">
+                <strong>Regulatory Notice:</strong> Products distributed by BioChemLabs are strictly intended for laboratory analytical testing and in-vitro research purposes only. They are not drugs, devices, or food additives, and are strictly prohibited from human consumption, therapeutic use, or clinical trials.
+            </div>
+            <p>&copy; 2026 BioChem Research Reference Standards. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
